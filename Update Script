@@ -1,0 +1,32 @@
+update()(
+while true; do
+    read -p "Do you want to update $HOSTNAME? (yes/no): " answer
+    
+    case $answer in
+        [Yy]es)
+            echo "Updating $HOSTNAME..."
+            sudo yum update
+
+            echo "Quick coffee break..."
+            sleep 5  # Delay for 5 seconds
+
+            echo "Upgrading $HOSTNAME..."
+            sudo yum upgrade
+
+            echo "Yes... another sip of coffee..."
+            sleep 5 # Delay for 5 seconds
+
+            echo "Cleaning up cache files..."
+            yum clean
+
+            break;;
+        [Nn]o)
+            echo "Thank you. Exiting..."
+            clear;;
+        *)
+            echo "Invalid input. Please enter 'yes' or 'no'.";;
+    esac
+done
+)
+
+update

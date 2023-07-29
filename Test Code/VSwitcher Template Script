@@ -1,0 +1,38 @@
+if (client.getBoostedSkillLevel(Skill.RANGED) <= 110 && v.getInventory().hasPotion(Potion.RANGING_POTION)) {
+    v.getInventory().pot(Potion.RANGING_POTION);
+} else {
+    Player player = v.getCombat().playerTarget();
+    if (player.getOverheadIcon() != null && player.getOverheadIcon().equals(HeadIcon.RANGED)) {
+        if (client.getBoostedSkillLevel(Skill.PRAYER) >= 77) {
+            v.getPrayer().prayOn(Prayer.AUGURY);
+        } else {
+            v.getPrayer().prayOn(Prayer.MYSTIC_MIGHT);
+        }
+        v.getInventory().equip(23624, 23603, 23654, 23599);
+        v.getInventory().equip(23653, 20425, 20426, 23642);
+        v.getInventory().equip(23652, 23613);
+        v.getInventory().equip(23626, 20598, 20599);
+        v.getInventory().equip(25517, 25518, 23617);
+        v.getInventory().equip(27166, 27167, 27168, 20431);
+        v.getInventory().equip(27193, 20576, 27170, 27162, 27183, 20577, 27156, 27171, 23444);
+        v.getInventory().equip(20517, 27115, 27174, 20520, 27117, 27175, 20595, 27119, 27176);
+        v.getInventory().equip(21024, 27194, 21018, 25518);
+        v.getCombat().spell(Spell.ICE_BARRAGE);
+        v.getCombat().castTarget();
+    } else {
+        if (client.getBoostedSkillLevel(Skill.PRAYER) >= 74) {
+            v.getPrayer().prayOn(Prayer.RIGOUR);
+        } else {
+            v.getPrayer().prayOn(Prayer.EAGLE_EYE);
+        }
+        v.getInventory().equip(20586, 21297, 23622, 23599, 20423, 23601, 20422);
+        v.getInventory().equip(23642, 23640, 23632, 23611);
+        v.getInventory().equip(23630, 23619);
+        v.getInventory().equip(23646, 23633, 23634, 23635);
+        v.getInventory().equip(27192, 27200, 10332, 10334, 27201, 27199, 10330, 27112, 23593, 27110, 20581, 27188, 27179);
+        v.getInventory().equip(26237, 26239, 26374, 27186, 20424, 25493);
+        v.getInventory().equip(27172,22249,19547);
+        v.getInventory().equip(22804,22806,22808,22810,22812,22814,27157);
+        v.getCombat().attackTarget();
+    }
+}
