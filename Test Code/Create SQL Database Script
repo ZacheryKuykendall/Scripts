@@ -1,0 +1,47 @@
+-- Prompt user for database names
+SET @database1 = 'database1';
+SET @database2 = 'database2';
+
+-- Create the first database
+CREATE DATABASE IF NOT EXISTS `@database1`;
+
+-- Switch to the first database
+USE `@database1`;
+
+-- Create tables in the first database
+CREATE TABLE IF NOT EXISTS table1 (
+  column1 INT,
+  column2 VARCHAR(255)
+);
+
+CREATE TABLE IF NOT EXISTS table2 (
+  column1 INT,
+  column2 VARCHAR(255)
+);
+
+CREATE TABLE IF NOT EXISTS table3 (
+  column1 INT,
+  column2 VARCHAR(255)
+);
+
+-- Create the second database
+CREATE DATABASE IF NOT EXISTS `@database2`;
+
+-- Switch to the second database
+USE `@database2`;
+
+-- Create tables in the second database
+CREATE TABLE IF NOT EXISTS table1 (
+  column1 INT,
+  column2 VARCHAR(255)
+);
+
+CREATE TABLE IF NOT EXISTS table2 (
+  column1 INT,
+  column2 VARCHAR(255)
+);
+
+CREATE TABLE IF NOT EXISTS table3 (
+  column1 INT,
+  column2 VARCHAR(255)
+);

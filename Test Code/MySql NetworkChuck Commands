@@ -1,0 +1,56 @@
+show databases;
+create database 'nc_coffee';
+show databases;
+use 'nc_coffee;
+show tables;
+create table 'coffee_table' (
+    id int,
+    name varchar(255),
+    region varchar(255),
+    roast varchar(255),
+);
+show tables;
+describe coffee_table;
+insert into coffee_table values (1, "default route", "ethiopia", "light");
+insert into coffee_table values (2, "docker run", "mexico", "medium");
+insert into coffee_table values (3, "helpdesk", "honduras", "medium");
+insert into coffee_table values (4, "on-call", "peru", "dark");
+insert into coffee_table values (5, "ifconfig", "tanzania", "blonde");
+insert into coffee_table values (6, "traceroute", "bali", "med-dark");.
+select * from coffee_table;
+select name from coffee_table;
+
+
+CREATE TABLE avengers (
+  first_name VARCHAR(255),
+  last_name VARCHAR(255),
+  origin VARCHAR(255),
+  age INT,
+  alias VARCHAR(255)
+);
+
+ALTER TABLE avengers
+ADD COLUMN id INT FIRST;
+
+insert into avengers values (1, "thor", "odinson", "asgard", 1500, "strongest avenger");
+insert into avengers values (2, "clint", "barton", "earth", 35, "hawkeye");
+insert into avengers values (3, "tony", "stark", "earth", 52, "iron man");
+insert into avengers values (4, "peter", "parker", "earth", 55, "spiderman");
+insert into avengers values (5, "groot", "groot", "planet x", 18, "tree");
+select * from avengers;
+select * from avengers where origin = "earth";
+select * from avengers where origin = "earth" or origin = "asgard";
+select alias from avengers where age < 30;
+select alias from avengers where not origin = "earth";
+
+insert into avengers values (6, "jeff", "smith", "earth", 43, "jeff the man");
+select * from avengers;
+delete from avengers where first_name = "jeff";
+
+update avengers set last_name= NULL where first_name = "groot";
+select * from avengers;
+
+select * from avengers order by age asc;
+select * from avengers order by age desc;
+
+DROP DATABASE `nc_coffee`;

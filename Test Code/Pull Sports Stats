@@ -1,0 +1,38 @@
+#!/bin/bash
+
+# Create a directory to store player data
+data_dir="lakers_player_data"
+mkdir -p "$data_dir"
+
+# Define the list of players
+players=("LeBron James" "Anthony Davis" "Kyle Kuzma" "Dwight Howard")
+
+# Loop through each player
+for player in "${players[@]}"; do
+    # Format the player name for the API request
+    formatted_name="${player// /%20}"
+
+    # Fetch player statistics from the API
+    api_url="https://www.balldontlie.io/api/v1/players?search=Lebron_James"
+    player_stats=$(curl -s "$api_url")
+
+    # Extract relevant information from the API response
+    player_id=$(echo "$player_stats" | jq -r '.data[0].id')
+    player_position=$(echo "$player_stats" | jq -r '.data[0].position')
+    player_team=$(echo "$player_stats" | jq -r '.data[0].team.full_name')
+
+    # Create a directory for the player
+    player_dir="$data_dir/$player"
+    mkdir -p "$player_dir"
+
+    # Save player stats to a text file
+    stats_file="$player_dir/stats.txt"
+    echo "Player: $player" > "$stats_file"
+    echo "ID: $player_id" >> "$stats_file"
+    echo "Position: $player_position" >> "$stats_file"
+    echo "Team: $player_team" >> "$stats_file"
+
+    echo "Data for $player saved."
+done
+
+echo "Player data retrieval completed."

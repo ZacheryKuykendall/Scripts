@@ -1,0 +1,8 @@
+# Check for available updates
+if yum check-update -q; then
+    echo "Updates available. Performing upgrade..."
+    yum upgrade -y
+else
+    echo "No updates available. Cleaning yum cache..."
+    yum clean all
+fi
