@@ -1,4 +1,0 @@
-# MySql Install
-sudo yum install mysql-server -y
-
-
