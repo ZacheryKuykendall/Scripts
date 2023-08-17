@@ -1,0 +1,66 @@
+# Ensure Azure CLI and Bicep are installed
+# Install Azure CLI (Windows example)
+Invoke-WebRequest -Uri https://aka.ms/installazurecliwindows -OutFile .\AzureCLI.msi; Start-Process msiexec.exe -Wait -ArgumentList '/I AzureCLI.msi /quiet'
+
+# Install Bicep
+az bicep install
+
+# Initialize Git
+git init
+git add .
+git commit -m "Initial commit"
+
+az bicep decompile --file ./path-to-arm-template.json
+
+param rgName string
+param location string = 'eastus'
+
+# Resource Group and Naming Conventions
+resource rg 'Microsoft.Resources/resourceGroups@2021-04-01' = {
+  name: rgName
+  location: location
+}
+
+# Virtual Machine Provisioning
+param vmSize string
+param vmName string
+param location string
+
+// ... define other necessary properties like OS, etc.
+
+resource vm 'Microsoft.Compute/virtualMachines@2021-04-01' = {
+  name: vmName
+  location: location
+  properties: {
+    // VM properties here
+  }
+}
+# For loops, review Bicep's loop syntax and adjust the VM module to create multiple VMs.
+
+# Network Resources
+// Define parameters for VNet, Subnet, NSG
+
+// Define the resources here
+
+#Parameter Files and Validation
+{
+  "vmSize": {
+    "value": "Standard_DS1_v2"
+  },
+  "vmName": {
+    "value": "myVM"
+  },
+  "location": {
+    "value": "eastus"
+  }
+}
+
+# Validate Bicep Files
+az bicep build --file ./vmModule.bicep
+az deployment group validate --resource-group MyRG --template-file ./vmModule.json --parameters ./vmParams.json
+
+# Deployment
+az deployment group create --resource-group MyRG --template-file ./vmModule.json --parameters ./vmParams.json
+
+#Cleanup
+az group delete --name MyRG --yes --no-wait
