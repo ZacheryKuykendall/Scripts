@@ -26,21 +26,21 @@ param vmSize string
 param vmName string
 param location string
 
-// ... define other necessary properties like OS, etc.
+# ... define other necessary properties like OS, etc.
 
 resource vm 'Microsoft.Compute/virtualMachines@2021-04-01' = {
   name: vmName
   location: location
   properties: {
-    // VM properties here
+    # VM properties here
   }
 }
 # For loops, review Bicep's loop syntax and adjust the VM module to create multiple VMs.
 
 # Network Resources
-// Define parameters for VNet, Subnet, NSG
+# Define parameters for VNet, Subnet, NSG
 
-// Define the resources here
+# Define the resources here
 
 #Parameter Files and Validation
 {
